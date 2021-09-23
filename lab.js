@@ -127,8 +127,8 @@ function greeting( obj ) {
 //Code Here
 
 function totalPopulation (states) {
-  const {utab, california, texas, arizona} = states
-  return utab + california + texas + arizona
+  const {utah, california, texas, arizona} = states
+  return utah + california + texas + arizona
 }
 
 
@@ -330,8 +330,9 @@ const colors = {
 }
 //do not edit this object
 
-//Code Here 
-
+//Code Here
+const colorsCopy = {...colors}
+console.log (colorsCopy)
 
 
 /*
@@ -359,7 +360,8 @@ const shippingInfo = {
 //do not edit the objects above
 
 //Code Here
-
+const helensInfo = {...contactInfo, ...shippingInfo}
+console.log (helensInfo)
 
 //Print helensInfo to see what it looks like, there should be no repeating properties.
 
@@ -376,15 +378,26 @@ const shippingInfo = {
   And finally, print the value of the mileage.
 */
 
-//Code Here 
+//Code Here
 
+class Vehicle {
+  constructor (capacity, color, mileage) {
+    this.capacity = capacity,
+    this.color = color,
+    this.mileage = mileage
+  }
+   move(miles) {
+    this.mileage += miles
+    console.log(this.mileage)
+   }
+}
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
-
+const myFirstVehicle = new Vehicle (4, "Silver", 1000)
 
 /* 
   Now we'll create a class that's based off of the vehicle class. 
@@ -396,17 +409,24 @@ const shippingInfo = {
 */
 
 //Code Here
-
+class Motorcycle extends Vehicle {
+  constructor (capacity, color, mileage, make) {
+    super (capacity, color, mileage)
+    this.make = make,
+    this.isCool = true
+  }
+}
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 //Code Here 
-
+const myFirstMotorcycle = new Motorcycle (1, 'Red', 3000, 'Kawasaki')
+console.log(myFirstMotorcycle)
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
-
+myFirstMotorcycle.move(500)
 /*
   Let's make another class based off of Vehicle. 
 
@@ -423,7 +443,25 @@ const shippingInfo = {
 */
 
 //Code Here
-
+class Boat extends Vehicle {
+  constructor (capacity, color, mileage, name, type, isSeaWorthy){
+    super (capacity, color, mileage)
+    this.name = name,
+    this.type = type,
+    this.isSeaWorthy = isSeaWorthy
+  }
+  checkSeaWorthiness(){
+    if (this.isSeaWorthy){
+      console.log(`The ${this.color} ${this.type} ${this.name} is seaworthy!`)
+    } else {
+      console.log(`You need to get your ${this.type} in shape`)
+    }
+  }
+  performMaintenance(){
+    this.isSeaWorthy = true
+    console.log(`Your ${this.type} is top notch!`)
+  }
+}
 
 /*
   Create a new boat using your class. You can choose whatever values you like for all the 
@@ -431,21 +469,21 @@ const shippingInfo = {
 */
 
 //Code Here
-
+const myFirstBoat = new Boat (15, 'Magenta', 150, 'Mastercraft X26', 'yacht', true)
 /*
   Call the checkSeaworthiness method on your new boat
 */
-
+myFirstBoat.checkSeaWorthiness()
 //Code Here
 
 /*
   Now run the performMaintenance method on your boat
 */
-
+myFirstBoat.performMaintenance()
 //Code Here 
 
 /*
   Check the seaworthiness once more (you should be ready for the water!)
-*/
+*/myFirstBoat.checkSeaWorthiness()
 
 //Code Here
